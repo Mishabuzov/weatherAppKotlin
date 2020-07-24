@@ -6,7 +6,11 @@ import com.example.weatherapp.content.DailyWeatherWrapper
 import com.example.weatherapp.content.WeeklyWeatherWrapper
 import io.reactivex.Single
 
-class DefaultWeatherRepository: WeatherRepository {
+object WeatherProvider {
+    val weatherRepository: WeatherRepository = DefaultWeatherRepository()
+}
+
+private class DefaultWeatherRepository : WeatherRepository {
 
     override fun getWeatherFor10Days(cityName: String): Single<WeeklyWeatherWrapper> =
         ApiFactory.weatherService.getWeatherForSeveralDays(cityName, Config.CNT)
@@ -16,7 +20,7 @@ class DefaultWeatherRepository: WeatherRepository {
 
 }
 
-private interface WeatherRepository {
+interface WeatherRepository {
 
     fun getWeatherFor10Days(cityName: String): Single<WeeklyWeatherWrapper>
 
