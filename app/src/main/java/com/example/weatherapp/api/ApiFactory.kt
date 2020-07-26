@@ -2,14 +2,14 @@ package com.example.weatherapp.api
 
 import com.example.weatherapp.Config
 import com.facebook.stetho.okhttp3.StethoInterceptor
+import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiFactory {
 
-    val weatherService: WeatherService = run {
+    val weatherService: WeatherService by lazy {
         buildRetrofit().create(WeatherService::class.java)
     }
 
@@ -18,7 +18,7 @@ object ApiFactory {
             .baseUrl(Config.WEATHER_ENDPOINT_DEBUG)
             .client(buildClient())
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create()) //rx wrapper
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create()) //rx wrapper
             .build()
 
     private fun buildClient(): OkHttpClient {
