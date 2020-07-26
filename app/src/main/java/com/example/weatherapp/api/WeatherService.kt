@@ -2,7 +2,7 @@ package com.example.weatherapp.api
 
 import com.example.weatherapp.content.DailyWeatherWrapper
 import com.example.weatherapp.content.WeeklyWeatherWrapper
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -24,7 +24,7 @@ interface WeatherService {
      */
     @GET("/data/2.5/group")
     fun getCurrentWeatherForCities(
-        @Query("id") cityIds: List<Long>
-    ): Single<List<DailyWeatherWrapper>>
+        @Query("id") cityIds: String
+    ): Single<DailyWeatherWrapper>
 
 }
