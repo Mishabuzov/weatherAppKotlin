@@ -10,4 +10,13 @@ object Config {
     val CNT = 10  // days count for returning value for concrete city.
     val LANG = "ru"
 
+    val citiesIds = mapOf<String, Long>(
+        "Moscow" to 524901,
+        "Kyiv" to 703448,
+        "London" to 2643743,
+        "Kazan" to 551487,
+        "Tokyo" to 1850144,
+        "Amsterdam" to 2759794
+    )
+
 }
