@@ -5,12 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.R
-import com.example.weatherapp.content.DailyWeatherWrapper
+import com.example.weatherapp.content.DailyWeather
 import kotlinx.android.synthetic.main.city_list_item.view.*
 
 class ChooseCityAdapter : RecyclerView.Adapter<ChooseCityAdapter.ChooseCityHolder>() {
 
-    private var cities: List<DailyWeatherWrapper> = ArrayList()
+    var cities: List<DailyWeather> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChooseCityHolder {
         return ChooseCityHolder(
@@ -25,8 +25,13 @@ class ChooseCityAdapter : RecyclerView.Adapter<ChooseCityAdapter.ChooseCityHolde
         holder.bind(cities[position])
     }
 
+    fun refreshWeather(cities: List<DailyWeather>) {
+        this.cities = cities
+        notifyDataSetChanged()
+    }
+
     class ChooseCityHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(dailyWeather: DailyWeatherWrapper) = with(itemView) {
+        fun bind(dailyWeather: DailyWeather) = with(itemView) {
             cityNameTextView.text = dailyWeather.cityName
             tempTextView.text = dailyWeather.dailyWeatherData.temp.toString()
         }
