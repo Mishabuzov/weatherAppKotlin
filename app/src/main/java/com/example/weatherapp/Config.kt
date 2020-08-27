@@ -16,7 +16,21 @@ object Config {
         "London" to 2643743,
         "Kazan" to 551487,
         "Tokyo" to 1850144,
-        "Amsterdam" to 2759794
+        "Amsterdam" to 2759794,
+        "Beijing" to 1816670,
+        "New York" to 5128581,
+        "Astana" to 1526273,
+        "Washington" to 5815135,
+        "Toronto" to 6167865,
+        "Monreal" to 1699310,
+        "Paris" to 2988507,
+        "Berlin" to 2950159,
+        "Saint Petersburg" to 498817,
+        "Magadan" to 2123628,
+        "Warsaw" to 756135,
+        "Viena" to 2761369,
+        "Marcel" to 2996051,
+        "Roma" to 5134295
     )
 
 }
