@@ -1,4 +1,4 @@
-package com.example.weatherapp.screen
+package com.example.weatherapp.screen.choose_city
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,13 +7,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weatherapp.R
 import com.example.weatherapp.content.DailyWeather
+import com.example.weatherapp.screen.DividerItemDecoration
 import kotlinx.android.synthetic.main.activity_choose_city.*
 
-class ChooseCityActivity : AppCompatActivity(), CityViewModel.CitiesCallback {
+class ChooseCityActivity : AppCompatActivity(), ChooseCityViewModel.RefreshDataCallback {
 
     private val weatherViewModel by lazy {
-        ViewModelProvider(this, CityViewModel.CityViewModelFactory(this))
-            .get(CityViewModel(this)::class.java)
+        ViewModelProvider(this, ChooseCityViewModel.CityViewModelFactory(this))
+            .get(ChooseCityViewModel(this)::class.java)
     }
 
     private val adapter = ChooseCityAdapter()
@@ -24,6 +25,7 @@ class ChooseCityActivity : AppCompatActivity(), CityViewModel.CitiesCallback {
 
         cityList.layoutManager = LinearLayoutManager(this)
         cityList.adapter = adapter
+        cityList.addItemDecoration(DividerItemDecoration(this))
         val currentLiveData = weatherViewModel.getCityWeather()
         currentLiveData.observe(this, Observer {
             it?.let { refreshAdapter(it) }

@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/weather"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".screen.ChooseCityActivity">
+        <activity android:name=".screen.choose_city.ChooseCityActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

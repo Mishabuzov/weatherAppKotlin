@@ -1,4 +1,4 @@
-package com.example.weatherapp.screen
+package com.example.weatherapp.screen.choose_city
 
 import android.view.LayoutInflater
 import android.view.View
@@ -33,11 +33,12 @@ class ChooseCityAdapter : RecyclerView.Adapter<ChooseCityAdapter.ChooseCityHolde
 
     class ChooseCityHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(dailyWeather: DailyWeather) = with(itemView) {
-            cityNameTextView.text = dailyWeather.cityName
-            tempTextView.text = String.format(
+            city_name_text_view.text = dailyWeather.cityName
+            temp_text_view.text = String.format(
                 resources.getString(R.string.celsius_format),
                 dailyWeather.dailyWeatherData.temp.roundToInt()
             )
+            weather_icon.setImageResource(dailyWeather.weatherDescriptionList[0].icon.iconResource)
         }
     }
 

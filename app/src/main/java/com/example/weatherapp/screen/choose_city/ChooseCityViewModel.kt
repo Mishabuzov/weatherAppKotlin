@@ -1,4 +1,4 @@
-package com.example.weatherapp.screen
+package com.example.weatherapp.screen.choose_city
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -10,7 +10,7 @@ import com.example.weatherapp.repository.WeatherProvider
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class CityViewModel(private val citiesCallback: CitiesCallback) : ViewModel() {
+class ChooseCityViewModel(private val refreshDataCallback: RefreshDataCallback) : ViewModel() {
 
     private val cityWeatherList: MutableLiveData<List<DailyWeather>> = MutableLiveData()
 
@@ -24,24 +24,26 @@ class CityViewModel(private val citiesCallback: CitiesCallback) : ViewModel() {
             .subscribe(
                 {
                     cityWeatherList.value = it.dailyWeather
-                    citiesCallback.refreshAdapter(it.dailyWeather)
+                    refreshDataCallback.refreshAdapter(it.dailyWeather)
                 },
                 {
                     Log.d(
                         "M_CityViewModel",
-                        "Error getting city weather list\n${it.stackTrace}"
+                        "Error getting city weather list\n${it.message}"
                     )
                 }
             )
     }
 
-    class CityViewModelFactory(private val citiesCallback: CitiesCallback) : ViewModelProvider.Factory {
+    class CityViewModelFactory(private val refreshDataCallback: RefreshDataCallback) :
+        ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return modelClass.getConstructor(CitiesCallback::class.java).newInstance(citiesCallback)
+            return modelClass.getConstructor(RefreshDataCallback::class.java)
+                .newInstance(refreshDataCallback)
         }
     }
 
-    interface CitiesCallback {
+    interface RefreshDataCallback {
         fun refreshAdapter(cities: List<DailyWeather>)
     }
 
