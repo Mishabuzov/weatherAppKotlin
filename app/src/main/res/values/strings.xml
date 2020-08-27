@@ -10,7 +10,7 @@
     <string name="humid">Humidity</string>
     <string name="wind_speed">Wind speed</string>
     <string name="min_max_temps">Min - Max Temp</string>
-    <string name="celsius">°C</string>
+    <string name="celsius_format">%1$d°C</string>
     <string name="press_symbol">mm Hg</string>
     <string name="wind_speed_symbol">m/s</string>
     <string name="humidity_symbol">%</string>
