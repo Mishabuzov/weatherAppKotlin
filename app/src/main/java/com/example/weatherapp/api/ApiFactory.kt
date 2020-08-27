@@ -14,7 +14,7 @@ object ApiFactory {
         buildRetrofit().create(WeatherService::class.java)
     }
 
-    // HttpLoggingInterceptor выводит подробности сетевого запроса в логи
+    // HttpLoggingInterceptor prints details about Http-request into the logs.
     private val loggingInterceptor: HttpLoggingInterceptor by lazy {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         httpLoggingInterceptor.apply {
