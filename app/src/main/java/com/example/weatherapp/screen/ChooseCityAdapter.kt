@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.R
 import com.example.weatherapp.content.DailyWeather
 import kotlinx.android.synthetic.main.city_list_item.view.*
+import kotlin.math.roundToInt
 
 class ChooseCityAdapter : RecyclerView.Adapter<ChooseCityAdapter.ChooseCityHolder>() {
 
@@ -33,7 +34,10 @@ class ChooseCityAdapter : RecyclerView.Adapter<ChooseCityAdapter.ChooseCityHolde
     class ChooseCityHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(dailyWeather: DailyWeather) = with(itemView) {
             cityNameTextView.text = dailyWeather.cityName
-            tempTextView.text = dailyWeather.dailyWeatherData.temp.toString()
+            tempTextView.text = String.format(
+                resources.getString(R.string.celsius_format),
+                dailyWeather.dailyWeatherData.temp.roundToInt()
+            )
         }
     }
 
