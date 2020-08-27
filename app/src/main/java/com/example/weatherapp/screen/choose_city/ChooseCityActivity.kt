@@ -35,8 +35,8 @@ class ChooseCityActivity : AppCompatActivity(), ChooseCityViewModel.RefreshDataC
         }
     }
 
-    override fun refreshAdapter(cities: List<DailyWeather>) {
-        adapter.refreshWeather(cities)
+    override fun refreshAdapter(dailyWeathers: List<DailyWeather>) {
+        adapter.refreshWeather(dailyWeathers)
     }
 
 }
