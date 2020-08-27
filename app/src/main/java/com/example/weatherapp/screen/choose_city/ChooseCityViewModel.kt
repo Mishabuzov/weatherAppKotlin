@@ -23,8 +23,8 @@ class ChooseCityViewModel(private val refreshDataCallback: RefreshDataCallback) 
             .subscribeOn(Schedulers.io())
             .subscribe(
                 {
-                    cityWeatherList.value = it.dailyWeather
-                    refreshDataCallback.refreshAdapter(it.dailyWeather)
+                    cityWeatherList.value = it
+                    refreshDataCallback.refreshAdapter(it)
                 },
                 {
                     Log.d(
@@ -44,7 +44,7 @@ class ChooseCityViewModel(private val refreshDataCallback: RefreshDataCallback) 
     }
 
     interface RefreshDataCallback {
-        fun refreshAdapter(cities: List<DailyWeather>)
+        fun refreshAdapter(dailyWeathers: List<DailyWeather>)
     }
 
 }
