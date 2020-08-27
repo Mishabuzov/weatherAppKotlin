@@ -8,9 +8,8 @@ data class DailyWeatherWrapper(
 
 data class DailyWeather(
     @SerializedName("main") val dailyWeatherData: DailyWeatherData,
-    @SerializedName("name") val cityName: String
+    @SerializedName("name") val cityName: String,
+    @SerializedName("weather") val weatherDescriptionList: List<WeatherDescription>
 )
 
 data class DailyWeatherData(val temp: Double)
-
-//data class CurrentCityWeather(val cityName: String, val currentTemp: Double)
