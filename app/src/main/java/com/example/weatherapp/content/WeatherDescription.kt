@@ -1,11 +1,12 @@
 package com.example.weatherapp.content
 
+import androidx.annotation.DrawableRes
 import com.example.weatherapp.R
 import com.google.gson.annotations.SerializedName
 
 data class WeatherDescription(val main: String, val description: String, val icon: IconType)
 
-enum class IconType(val iconResource: Int) {
+enum class IconType(@DrawableRes val iconResource: Int) {
     @SerializedName("01d") DAY_1(R.drawable.d01),
     @SerializedName("02d") DAY_2(R.drawable.d02),
     @SerializedName("03d") DAY_3(R.drawable.d03),
