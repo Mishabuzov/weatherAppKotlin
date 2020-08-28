@@ -5,16 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.weatherapp.utils.Config
-import com.example.weatherapp.content.DailyWeather
+import com.example.weatherapp.content.CurrentWeather
 import com.example.weatherapp.repository.WeatherProvider
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 class ChooseCityViewModel(private val refreshDataCallback: RefreshDataCallback) : ViewModel() {
 
-    private val cityWeatherList: MutableLiveData<List<DailyWeather>> = MutableLiveData()
+    private val currentWeatherList: MutableLiveData<List<CurrentWeather>> = MutableLiveData()
 
-    fun getCityWeather(): MutableLiveData<List<DailyWeather>> = cityWeatherList
+    fun getCityWeather(): MutableLiveData<List<CurrentWeather>> = currentWeatherList
 
     fun processWeatherRequest() {
         WeatherProvider.weatherRepository
@@ -23,7 +23,7 @@ class ChooseCityViewModel(private val refreshDataCallback: RefreshDataCallback) 
             .subscribeOn(Schedulers.io())
             .subscribe(
                 {
-                    cityWeatherList.value = it
+                    currentWeatherList.value = it
                     refreshDataCallback.refreshAdapter(it)
                 },
                 {
@@ -44,7 +44,7 @@ class ChooseCityViewModel(private val refreshDataCallback: RefreshDataCallback) 
     }
 
     interface RefreshDataCallback {
-        fun refreshAdapter(dailyWeathers: List<DailyWeather>)
+        fun refreshAdapter(currentWeathers: List<CurrentWeather>)
     }
 
 }

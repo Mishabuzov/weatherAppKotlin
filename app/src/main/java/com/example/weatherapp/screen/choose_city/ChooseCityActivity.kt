@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weatherapp.R
-import com.example.weatherapp.content.DailyWeather
+import com.example.weatherapp.content.CurrentWeather
 import com.example.weatherapp.screen.DividerItemDecoration
 import kotlinx.android.synthetic.main.activity_choose_city.*
 
@@ -35,8 +35,8 @@ class ChooseCityActivity : AppCompatActivity(), ChooseCityViewModel.RefreshDataC
         }
     }
 
-    override fun refreshAdapter(dailyWeathers: List<DailyWeather>) {
-        adapter.refreshWeather(dailyWeathers)
+    override fun refreshAdapter(currentWeathers: List<CurrentWeather>) {
+        adapter.refreshWeather(currentWeathers)
     }
 
 }

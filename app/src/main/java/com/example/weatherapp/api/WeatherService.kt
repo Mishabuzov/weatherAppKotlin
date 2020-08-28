@@ -1,6 +1,6 @@
 package com.example.weatherapp.api
 
-import com.example.weatherapp.content.DailyWeatherWrapper
+import com.example.weatherapp.content.CurrentWeatherWrapper
 import com.example.weatherapp.content.WeeklyWeatherWrapper
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
@@ -25,6 +25,6 @@ interface WeatherService {
     @GET("/data/2.5/group")
     fun getCurrentWeatherForCities(
         @Query("id") cityIds: String
-    ): Single<DailyWeatherWrapper>
+    ): Single<CurrentWeatherWrapper>
 
 }
