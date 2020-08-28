@@ -2,7 +2,7 @@
     <string name="app_name">Weather</string>
     <string name="date">Date</string>
     <string name="main">Main</string>
-    <string name="descr">Descr</string>
+    <string name="description">Description</string>
     <string name="city_exz">Kazan</string>
     <string name="temp_exz">+7</string>
     <string name="temp">Temperature</string>
@@ -11,9 +11,9 @@
     <string name="wind_speed">Wind speed</string>
     <string name="min_max_temps">Min - Max Temp</string>
     <string name="celsius_format">%1$d°C</string>
-    <string name="press_symbol">mm Hg</string>
-    <string name="wind_speed_symbol">m/s</string>
-    <string name="humidity_symbol">%</string>
+    <string name="pressure_format">%1$s mm Hg</string>
+    <string name="wind_format">%1$s m/s</string>
+    <string name="humidity_format">%1$s%%</string>
     <string name="error_loading_message">Не удалось загрузить погоду</string>
     <string name="reload">Повторить попытку</string>
     <string name="network_error">Network error</string>
