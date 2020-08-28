@@ -4,11 +4,10 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.weatherapp.utils.Config
+import com.example.weatherapp.Config
 import com.example.weatherapp.content.CurrentWeather
-import com.example.weatherapp.repository.WeatherProvider
+import com.example.weatherapp.WeatherProvider
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 class ChooseCityViewModel(private val refreshDataCallback: RefreshDataCallback) : ViewModel() {

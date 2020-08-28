@@ -1,6 +1,6 @@
 package com.example.weatherapp.api
 
-import com.example.weatherapp.utils.Config
+import com.example.weatherapp.Config
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import okhttp3.OkHttpClient

@@ -4,10 +4,8 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.weatherapp.content.CurrentWeather
 import com.example.weatherapp.content.WeeklyWeather
-import com.example.weatherapp.repository.WeatherProvider
-import com.example.weatherapp.screen.choose_city.ChooseCityViewModel
+import com.example.weatherapp.WeatherProvider
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
