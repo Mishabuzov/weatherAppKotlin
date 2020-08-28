@@ -12,25 +12,28 @@ class ChooseCityAdapter : RecyclerView.Adapter<ChooseCityAdapter.ChooseCityHolde
 
     private var currentWeathers: List<CurrentWeather> = ArrayList()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChooseCityHolder {
-        return ChooseCityHolder(
+    lateinit var onItemClick: ((Long) -> Unit)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChooseCityHolder =
+        ChooseCityHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.city_list_item, parent, false)
+                .inflate(R.layout.city_list_item, parent, false),
+            onItemClick
         )
-    }
 
     override fun getItemCount(): Int = currentWeathers.size
 
-    override fun onBindViewHolder(holder: ChooseCityHolder, position: Int) {
+    override fun onBindViewHolder(holder: ChooseCityHolder, position: Int) =
         holder.bind(currentWeathers[position])
-    }
 
     fun refreshWeather(currentWeathers: List<CurrentWeather>) {
         this.currentWeathers = currentWeathers
         notifyDataSetChanged()
     }
 
-    class ChooseCityHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ChooseCityHolder(itemView: View, private val onItemClick: ((Long) -> Unit)) :
+        RecyclerView.ViewHolder(itemView) {
+
         fun bind(currentWeather: CurrentWeather) = with(itemView) {
             city_name_text_view.text = currentWeather.cityName
             temp_text_view.text = String.format(
@@ -38,6 +41,7 @@ class ChooseCityAdapter : RecyclerView.Adapter<ChooseCityAdapter.ChooseCityHolde
                 currentWeather.temperature
             )
             weather_icon.setImageResource(currentWeather.weatherIconResource)
+            setOnClickListener { onItemClick.invoke(currentWeather.cityId) }
         }
     }
 
