@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class DividerItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
 
-    private val mDivider: Drawable? by lazy {
+    private val divider: Drawable? by lazy {
         val a = context
             .obtainStyledAttributes(intArrayOf(R.attr.listDivider))
         val drawable = a.getDrawable(0)
@@ -19,7 +19,7 @@ class DividerItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
         drawable
     }
 
-    private var mOrientation = -1
+    private var orientation = -1
 
     override fun getItemOffsets(
         outRect: Rect,
@@ -28,25 +28,25 @@ class DividerItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
         state: RecyclerView.State
     ) {
         super.getItemOffsets(outRect, view, parent, state)
-        if (mDivider == null) {
+        if (divider == null) {
             return
         }
         val position = parent.getChildAdapterPosition(view)
         if (position == RecyclerView.NO_POSITION || position == 0) {
             return
         }
-        if (mOrientation == -1) {
+        if (orientation == -1) {
             getOrientation(parent)
         }
-        if (mOrientation == LinearLayoutManager.VERTICAL) {
-            outRect.top = mDivider?.intrinsicHeight ?: 0
+        if (orientation == LinearLayoutManager.VERTICAL) {
+            outRect.top = divider?.intrinsicHeight ?: 0
         } else {
-            outRect.left = mDivider?.intrinsicWidth ?: 0
+            outRect.left = divider?.intrinsicWidth ?: 0
         }
     }
 
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-        if (mDivider == null) {
+        if (divider == null) {
             super.onDrawOver(c, parent, state)
             return
         }
@@ -57,14 +57,14 @@ class DividerItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
         var top = 0
         var bottom = 0
         val size: Int
-        val orientation = if (mOrientation != -1) mOrientation else getOrientation(parent)
+        val orientation = if (this.orientation != -1) this.orientation else getOrientation(parent)
         val childCount = parent.childCount
         if (orientation == LinearLayoutManager.VERTICAL) {
-            size = mDivider?.intrinsicHeight ?: 0
+            size = divider?.intrinsicHeight ?: 0
             left = parent.paddingLeft
             right = parent.width - parent.paddingRight
         } else { //horizontal
-            size = mDivider?.intrinsicWidth ?: 0
+            size = divider?.intrinsicWidth ?: 0
             top = parent.paddingTop
             bottom = parent.height - parent.paddingBottom
         }
@@ -78,20 +78,20 @@ class DividerItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
                 left = child.left - params.leftMargin
                 right = left + size
             }
-            mDivider?.setBounds(left, top, right, bottom)
-            mDivider?.draw(c)
+            divider?.setBounds(left, top, right, bottom)
+            divider?.draw(c)
         }
         // show last divider
     }
 
     private fun getOrientation(parent: RecyclerView): Int {
-        if (mOrientation == -1) {
+        if (orientation == -1) {
             if (parent.layoutManager is LinearLayoutManager) {
                 val layoutManager: LinearLayoutManager =
                     parent.layoutManager as LinearLayoutManager
-                mOrientation = layoutManager.orientation
+                orientation = layoutManager.orientation
             }
         }
-        return mOrientation
+        return orientation
     }
 }
