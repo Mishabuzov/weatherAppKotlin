@@ -8,6 +8,7 @@ import com.example.weatherapp.utils.Config
 import com.example.weatherapp.content.CurrentWeather
 import com.example.weatherapp.repository.WeatherProvider
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 class ChooseCityViewModel(private val refreshDataCallback: RefreshDataCallback) : ViewModel() {
@@ -15,12 +16,11 @@ class ChooseCityViewModel(private val refreshDataCallback: RefreshDataCallback) 
     private val currentWeatherList: MutableLiveData<List<CurrentWeather>> = MutableLiveData()
 
     fun getCityWeather(): MutableLiveData<List<CurrentWeather>> = currentWeatherList
-
-    fun processWeatherRequest() {
+    fun processCurrentWeatherRequest() =
         WeatherProvider.weatherRepository
             .getCurrentWeather(Config.citiesIds.values.joinToString(separator = ","))
-            .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
                     currentWeatherList.value = it
@@ -28,14 +28,14 @@ class ChooseCityViewModel(private val refreshDataCallback: RefreshDataCallback) 
                 },
                 {
                     Log.d(
-                        "M_CityViewModel",
-                        "Error getting city weather list\n${it.message}"
+                        "M_ChooseCityViewModel",
+                        "Error getting current weather list\n${it.message}"
                     )
                 }
             )
-    }
 
-    class CityViewModelFactory(private val refreshDataCallback: RefreshDataCallback) :
+
+    class ChooseCityViewModelFactory(private val refreshDataCallback: RefreshDataCallback) :
         ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             return modelClass.getConstructor(RefreshDataCallback::class.java)
