@@ -13,7 +13,7 @@ interface WeatherService {
      */
     @GET("/data/2.5/forecast/daily")
     fun getWeatherForSeveralDays(
-        @Query("q") cityName: String,
+        @Query("id") cityId: Long,
         @Query("cnt") daysCount: Int
     ): Single<WeeklyWeatherWrapper>
 

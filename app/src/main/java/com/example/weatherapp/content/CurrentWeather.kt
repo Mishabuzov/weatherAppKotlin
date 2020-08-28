@@ -9,6 +9,7 @@ data class CurrentWeatherWrapper(
 
 data class CurrentWeatherNetworkData(
     @SerializedName("main") val currentTemperatureData: CurrentTemperatureData,
+    @SerializedName("id") val cityId: Long,
     @SerializedName("name") val cityName: String,
     @SerializedName("weather") val weatherDescriptionList: List<WeatherDescription>
 )
@@ -16,6 +17,7 @@ data class CurrentWeatherNetworkData(
 data class CurrentTemperatureData(val temp: Double)
 
 data class CurrentWeather(
+    val cityId: Long,
     val cityName: String,
     val temperature: Int,
     val weatherDescription: String,
