@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.weatherapp.Config
+import com.example.weatherapp.utils.Config
 import com.example.weatherapp.content.DailyWeather
 import com.example.weatherapp.repository.WeatherProvider
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers

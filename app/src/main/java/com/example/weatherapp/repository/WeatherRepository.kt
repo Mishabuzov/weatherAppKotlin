@@ -3,7 +3,7 @@ package com.example.weatherapp.repository
 import com.example.weatherapp.api.ApiFactory
 import com.example.weatherapp.content.DailyWeather
 import com.example.weatherapp.content.WeeklyWeatherWrapper
-import com.example.weatherapp.Config
+import com.example.weatherapp.utils.Config
 import com.example.weatherapp.extensions.convertToDailyWeather
 import io.reactivex.rxjava3.core.Single
 

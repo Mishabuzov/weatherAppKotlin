@@ -1,6 +1,6 @@
 package com.example.weatherapp.api
 
-import com.example.weatherapp.Config
+import com.example.weatherapp.utils.Config
 import okhttp3.HttpUrl
 import okhttp3.Interceptor
 import okhttp3.Request
