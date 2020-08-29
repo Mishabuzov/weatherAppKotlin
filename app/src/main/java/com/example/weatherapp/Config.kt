@@ -22,13 +22,13 @@ object Config {
         "Astana" to 1526273,
         "Washington" to 5815135,
         "Toronto" to 6167865,
-        "Monreal" to 1699310,
+        "Montreal" to 1699310,
         "Paris" to 2988507,
         "Berlin" to 2950159,
         "Saint Petersburg" to 498817,
         "Magadan" to 2123628,
         "Warsaw" to 756135,
-        "Viena" to 2761369,
+        "Vienna" to 2761369,
         "Marcel" to 2996051,
         "Roma" to 5134295
     )
