@@ -2,7 +2,7 @@ package com.example.weatherapp
 
 object Config {
 
-    val WEATHER_ENDPOINT_DEBUG = "https://api.openweathermap.org/"
+    val WEATHER_ENDPOINT_DEBUG = "https://api.openweathermap.org"
     val WEATHER_ENDPOINT_RELEASE = WEATHER_ENDPOINT_DEBUG
 
     val APPLICATION_ID = "7d848404f9f02c778b6cdfa0760e8d0d"

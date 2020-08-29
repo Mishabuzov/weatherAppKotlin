@@ -11,7 +11,7 @@ interface WeatherService {
     /**
      * Returns weather for several days by chosen city.
      */
-    @GET("/data/2.5/forecast/daily")
+    @GET("data/2.5/forecast/daily")
     fun getWeatherForSeveralDays(
         @Query("id") cityId: Long,
         @Query("cnt") daysCount: Int
@@ -22,7 +22,7 @@ interface WeatherService {
      * Obtains current weather for chosen cities by provided ids.
      * @param: cityIds - list of unique identifiers of defined cities.
      */
-    @GET("/data/2.5/group")
+    @GET("data/2.5/group")
     fun getCurrentWeatherForCities(
         @Query("id") cityIds: String
     ): Single<CurrentWeatherWrapper>
