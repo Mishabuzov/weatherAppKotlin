@@ -10,16 +10,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiFactory {
 
-    val weatherService: WeatherService by lazy {
-        buildRetrofit().create(WeatherService::class.java)
-    }
+    val weatherService: WeatherService by lazy { buildRetrofit().create(WeatherService::class.java) }
 
     // HttpLoggingInterceptor prints details about Http-request into the logs.
     private val loggingInterceptor: HttpLoggingInterceptor by lazy {
-        val httpLoggingInterceptor = HttpLoggingInterceptor()
-        httpLoggingInterceptor.apply {
-            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        }
+        HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
     }
 
     private fun buildRetrofit(): Retrofit = Retrofit.Builder()
