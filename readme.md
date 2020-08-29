@@ -13,4 +13,4 @@ Technologies and libs utilized:
 3. Network logic is delegated to separate repository in order to make the code clean. Custom Kotlin extension are also used for processing data.
 4. *ConstraintLayout, CardView, RecyclerView, RelativeLayout, LinearLayout...etc* are used in .XML markup.
 
-Clone the repository and install **weather.apk** in order to launch the app. You can also download the .apk from [this link](https://yadi.sk/d/nNTlcNT78DIF0Q).
+Clone the repository and install **weather.apk** in order to launch the app. You can also download the .apk by [this link](https://yadi.sk/d/nNTlcNT78DIF0Q).
