@@ -30,7 +30,7 @@ object ApiFactory {
         .build()
 
     private fun buildClient(): OkHttpClient = OkHttpClient.Builder()
-        .addInterceptor(ApiKeyInterceptor.create())
+        .addInterceptor(ApiKeyInterceptor)
         .addInterceptor(loggingInterceptor)
         .addNetworkInterceptor(StethoInterceptor())
         .build()

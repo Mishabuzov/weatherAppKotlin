@@ -6,13 +6,7 @@ import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
 
-class ApiKeyInterceptor : Interceptor {
-
-    companion object Initializer {
-        fun create(): Interceptor {
-            return ApiKeyInterceptor()
-        }
-    }
+object ApiKeyInterceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest: Request = chain.request()
