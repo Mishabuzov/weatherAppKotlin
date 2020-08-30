@@ -8,40 +8,43 @@ import com.example.weatherapp.R
 import com.example.weatherapp.content.CurrentWeather
 import kotlinx.android.synthetic.main.city_list_item.view.*
 
-class ChooseCityAdapter : RecyclerView.Adapter<ChooseCityAdapter.ChooseCityHolder>() {
+class ChooseCityAdapter(private val onItemClick: (Pair<Long, String>) -> Unit) :
+    RecyclerView.Adapter<ChooseCityAdapter.ChooseCityHolder>() {
 
     private var currentWeathers: List<CurrentWeather> = ArrayList()
-
-    lateinit var onItemClick: ((Long) -> Unit)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChooseCityHolder =
         ChooseCityHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.city_list_item, parent, false),
-            onItemClick
         )
 
     override fun getItemCount(): Int = currentWeathers.size
 
     override fun onBindViewHolder(holder: ChooseCityHolder, position: Int) =
-        holder.bind(currentWeathers[position])
+        holder.bind(currentWeathers[position], onItemClick)
 
     fun refreshWeather(currentWeathers: List<CurrentWeather>) {
         this.currentWeathers = currentWeathers
         notifyDataSetChanged()
     }
 
-    class ChooseCityHolder(itemView: View, private val onItemClick: ((Long) -> Unit)) :
+    class ChooseCityHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
 
-        fun bind(currentWeather: CurrentWeather) = with(itemView) {
+        fun bind(
+            currentWeather: CurrentWeather,
+            onItemClick: ((Pair<Long, String>) -> Unit)
+        ) = with(itemView) {
             city_name_text_view.text = currentWeather.cityName
             temp_text_view.text = String.format(
                 resources.getString(R.string.celsius_format),
                 currentWeather.temperature
             )
             weather_icon.setImageResource(currentWeather.weatherIconResource)
-            setOnClickListener { onItemClick.invoke(currentWeather.cityId) }
+            setOnClickListener {
+                onItemClick.invoke(Pair(currentWeather.cityId, currentWeather.cityName))
+            }
         }
     }
 

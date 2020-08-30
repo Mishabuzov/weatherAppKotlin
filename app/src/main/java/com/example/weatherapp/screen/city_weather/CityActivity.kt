@@ -14,10 +14,12 @@ class CityActivity : AppCompatActivity(), CityViewModel.RefreshDataCallback {
 
     companion object {
         const val CITY_ID_KEY = "city_id"
+        const val CITY_NAME_KEY = "city_name"
 
-        fun start(activity: AppCompatActivity, cityName: Long) {
+        fun start(activity: AppCompatActivity, cityId: Long, cityName: String) {
             val intent = Intent(activity, CityActivity::class.java)
-            intent.putExtra(CITY_ID_KEY, cityName)
+            intent.putExtra(CITY_ID_KEY, cityId)
+            intent.putExtra(CITY_NAME_KEY, cityName)
             activity.startActivity(intent)
         }
     }
@@ -34,6 +36,9 @@ class CityActivity : AppCompatActivity(), CityViewModel.RefreshDataCallback {
         setContentView(R.layout.activity_city_weather)
 
         val cityId = intent.getLongExtra(CITY_ID_KEY, 0)
+        val cityName = intent.getStringExtra(CITY_NAME_KEY)
+        supportActionBar?.title = cityName
+
         initAdapter()
 
         val weeklyLiveData = cityViewModel.getWeeklyWeather()

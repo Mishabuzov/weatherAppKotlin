@@ -1,14 +1,10 @@
 package com.example.weatherapp.screen.choose_city
 
 import android.os.Bundle
-import android.view.View
-import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.OnItemTouchListener
 import com.example.weatherapp.R
 import com.example.weatherapp.content.CurrentWeather
 import com.example.weatherapp.screen.DividerItemDecoration
@@ -22,7 +18,7 @@ class ChooseCityActivity : AppCompatActivity(), ChooseCityViewModel.RefreshDataC
             .get(ChooseCityViewModel(this)::class.java)
     }
 
-    private val adapter = ChooseCityAdapter()
+    private val adapter = ChooseCityAdapter { CityActivity.start(this, it.first, it.second) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +36,6 @@ class ChooseCityActivity : AppCompatActivity(), ChooseCityViewModel.RefreshDataC
     }
 
     private fun initAdapter() {
-        adapter.onItemClick = {
-            CityActivity.start(this, it)
-        }
         choose_city_list.layoutManager = LinearLayoutManager(this)
         choose_city_list.adapter = this.adapter
         choose_city_list.addItemDecoration(DividerItemDecoration(this))
