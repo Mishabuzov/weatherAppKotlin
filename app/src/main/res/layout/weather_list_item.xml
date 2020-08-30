@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     card_view:cardBackgroundColor="@color/windowBackground"
-    card_view:cardElevation="@dimen/card_elevation_tiny"
+    card_view:cardElevation="@dimen/card_elevation_small"
     card_view:cardUseCompatPadding="true">
 
     <LinearLayout
@@ -26,29 +26,29 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal"
             android:paddingTop="@dimen/margin_10"
-            android:paddingBottom="@dimen/margin_5"
-            android:gravity="center">
+            android:paddingBottom="@dimen/margin_5">
 
             <ImageView
                 android:id="@+id/weather_icon"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                tools:src="@drawable/d01"
+                android:layout_marginEnd="@dimen/margin_10"
                 android:layout_marginRight="@dimen/margin_10"
-                android:layout_marginEnd="@dimen/margin_10" />
+                tools:src="@drawable/d01" />
 
             <TextView
                 android:id="@+id/description_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/description"
-                android:textStyle="bold"
-                android:textColor="@color/textColorPrimary"
                 android:lines="1"
-                android:textSize="@dimen/text_20" />
+                android:text="@string/description"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/text_20"
+                android:textStyle="bold" />
 
 
         </LinearLayout>
@@ -83,8 +83,8 @@
                 android:id="@+id/temp_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/textColorPrimary"
                 android:text="@string/temp"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/text_18" />
 
         </LinearLayout>
@@ -119,8 +119,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/margin_5"
                 android:layout_marginRight="@dimen/margin_5"
-                android:textColor="@color/textColorPrimary"
                 android:text="@string/press"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/text_18" />
 
         </LinearLayout>
@@ -147,16 +147,16 @@
                 android:layout_marginEnd="@dimen/margin_5"
                 android:layout_marginRight="@dimen/margin_5"
                 android:layout_weight="1"
-                android:textColor="@color/textColorPrimary"
                 android:text="@string/humid"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/text_18" />
 
             <TextView
                 android:id="@+id/humidity_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/textColorPrimary"
                 android:text="@string/humid"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/text_18" />
 
         </LinearLayout>
@@ -181,18 +181,18 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="@color/textColorPrimary"
                 android:text="@string/wind_speed"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/text_18" />
 
             <TextView
                 android:id="@+id/wind_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/textColorPrimary"
                 android:layout_marginEnd="@dimen/margin_5"
                 android:layout_marginRight="@dimen/margin_5"
                 android:text="@string/wind_speed"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/text_18" />
 
         </LinearLayout>
