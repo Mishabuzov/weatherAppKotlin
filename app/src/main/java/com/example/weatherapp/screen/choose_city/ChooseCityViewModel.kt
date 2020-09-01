@@ -3,18 +3,20 @@ package com.example.weatherapp.screen.choose_city
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.example.weatherapp.Config
-import com.example.weatherapp.content.CurrentWeather
 import com.example.weatherapp.WeatherProvider
+import com.example.weatherapp.content.CurrentWeather
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class ChooseCityViewModel(private val refreshDataCallback: RefreshDataCallback) : ViewModel() {
+class ChooseCityViewModel() : ViewModel() {
 
     private val currentWeatherList: MutableLiveData<List<CurrentWeather>> = MutableLiveData()
 
     fun getCityWeather(): MutableLiveData<List<CurrentWeather>> = currentWeatherList
+
+    lateinit var refreshDataCallback: RefreshDataCallback
+
     fun processCurrentWeatherRequest() =
         WeatherProvider.weatherRepository
             .getCurrentWeather(Config.citiesIds.values.joinToString(separator = ","))
@@ -32,15 +34,6 @@ class ChooseCityViewModel(private val refreshDataCallback: RefreshDataCallback) 
                     )
                 }
             )
-
-
-    class ChooseCityViewModelFactory(private val refreshDataCallback: RefreshDataCallback) :
-        ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return modelClass.getConstructor(RefreshDataCallback::class.java)
-                .newInstance(refreshDataCallback)
-        }
-    }
 
     interface RefreshDataCallback {
         fun refreshAdapter(currentWeathers: List<CurrentWeather>)
